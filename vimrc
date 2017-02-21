@@ -20,7 +20,7 @@ set encoding=utf-8
 set nocompatible
 syntax on
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(fnamemodify(expand('<sfile>'), ':h').'/bundle')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
