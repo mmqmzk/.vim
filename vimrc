@@ -50,6 +50,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 call plug#end()
 
+" ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn|vscode))|(node_modules|typings)$',
+  \ 'file': '\v\.(exe|so|dll|log|doc|docx|xls|xlsx|class|swp)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='badwolf'
@@ -64,6 +71,9 @@ let g:neocomplcache_enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+inoremap <expr><c-g> neocomplcache#undo_completion()
 
 " nerdtree
 noremap <F4> :NERDTreeToggle<CR>
@@ -87,6 +97,7 @@ xmap <c-k> <Plug>(neosnippet_expand_target)
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
             \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
+
 " incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -114,11 +125,11 @@ vnoremap < <gv
 vnoremap > >gv
 noremap <c-l> :bnext<cr>
 noremap <c-h> :bprevious<cr>
-noremap <Leader>bd :bdelete<cr>
+noremap <Leader>d :bdelete<cr>
 noremap <Up> gk
 noremap <Down> gj
 noremap <leader>r viwpyiw
-noremap <leader>z :CtrlPBuffer<cr>
+noremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 if (has('gui_running'))
     set background=dark
