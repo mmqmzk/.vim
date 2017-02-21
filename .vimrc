@@ -60,50 +60,52 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " nerdtree
-map <F4> :NERDTreeToggle<CR>
+noremap <F4> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " easy motion
 let g:EasyMotion_smartcase = 1
-map <leader><leader>/ <Plug>(easymotion-sn)
-omap <leader><leader>/ <Plug>(easymotion-tn)
-map <leader><leader>j <Plug>(easymotion-j)
-map <leader><leader>k <Plug>(easymotion-k)
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader><leader>h <Plug>(easymotion-linebackward)
+noremap <leader><leader>/ <Plug>(easymotion-sn)
+onoremap <leader><leader>/ <Plug>(easymotion-tn)
+noremap <leader><leader>j <Plug>(easymotion-j)
+noremap <leader><leader>k <Plug>(easymotion-k)
+noremap <leader><leader>l <Plug>(easymotion-lineforward)
+noremap <leader><leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 
 " neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+inoremap <C-k> <Plug>(neosnippet_expand_or_jump)
+snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
+xnoremap <C-k> <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+inoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
 " incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+noremap /  <Plug>(incsearch-forward)
+noremap ?  <Plug>(incsearch-backward)
+noremap g/ <Plug>(incsearch-stay)
 
 "key mapping
-imap <c-cr> <esc>o
-imap <s-cr> <esc>O
-imap <c-a> <esc>I
-imap <c-e> <esc>A
-imap <c-[> <esc>
-imap <c-]> <esc>
-imap <c-w> <esc>dbs
-imap <c-u> <esc>d^s
-map Y y$
-map <F8> :let @/=""<CR>
-map <unique> <leader>y "+y
-map <unique> <leader>p "+p
-map <unique> <leader>P "+P
+inoremap <c-cr> <esc>o
+inoremap <s-cr> <esc>O
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+inoremap <c-[> <esc>
+inoremap <c-]> <esc>
+inoremap <c-w> <esc>dbs
+inoremap <c-u> <esc>d^s
+inoremap <c-k> <esc>C
+inoremap <c-y> <esc>cc
+noremap Y y$
+noremap <F8> :let @/=""<CR>
+noremap <unique> <leader>y "+y
+noremap <unique> <leader>p "+p
+noremap <unique> <leader>P "+P
 vnoremap <unique> < <gv
 vnoremap <unique> > >gv
 noremap <c-l> :bnext<cr>
@@ -113,7 +115,7 @@ noremap <unique> <Up> gk
 noremap <unique> <Down> gj
 noremap <leader>r viwpyiw
 noremap <leader>z :CtrlPBuffer<cr>
-nnoremap <unique> <silent> <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
+nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 if (has('gui_running'))
     set background=dark
     color solarized
