@@ -20,10 +20,10 @@ set encoding=utf-8
 set nocompatible
 syntax on
 
-call plug#begin(fnamemodify(expand('<sfile>'), ':h').'/bundle')
+call plug#begin(fnamemodify(expand('<sfile>'), ':h') . '/bundle')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
@@ -31,17 +31,22 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
-Plug 'plasticboy/vim-markdown'
-Plug 'moll/vim-node'
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'terryma/vim-expand-region'
+Plug 'Shougo/vinarise.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-operator-replace'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " airline
@@ -89,6 +94,9 @@ snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 noremap /  <Plug>(incsearch-forward)
 noremap ?  <Plug>(incsearch-backward)
 noremap g/ <Plug>(incsearch-stay)
+
+" indentLine
+let g:indentLine_enabled = 1
 
 "key mapping
 inoremap <c-cr> <esc>o
