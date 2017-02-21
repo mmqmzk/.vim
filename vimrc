@@ -47,6 +47,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 Plug 'tpope/vim-fugitive'
+Plug 'rking/ag.vim'
 call plug#end()
 
 " airline
@@ -70,30 +71,26 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " easy motion
 let g:EasyMotion_smartcase = 1
-noremap <leader><leader>/ <Plug>(easymotion-sn)
-onoremap <leader><leader>/ <Plug>(easymotion-tn)
-noremap <leader><leader>j <Plug>(easymotion-j)
-noremap <leader><leader>k <Plug>(easymotion-k)
-noremap <leader><leader>l <Plug>(easymotion-lineforward)
-noremap <leader><leader>h <Plug>(easymotion-linebackward)
+map <leader>/ <Plug>(easymotion-sn)
+omap <leader>/ <Plug>(easymotion-tn)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 
 " neosnippet
-inoremap <C-k> <Plug>(neosnippet_expand_or_jump)
-snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
-xnoremap <C-k> <Plug>(neosnippet_expand_target)
+imap <c-k> <Plug>(neosnippet_expand_or_jump)
+smap <c-k> <Plug>(neosnippet_expand_or_jump)
+xmap <c-k> <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
-inoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
 " incsearch
-noremap /  <Plug>(incsearch-forward)
-noremap ?  <Plug>(incsearch-backward)
-noremap g/ <Plug>(incsearch-stay)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " indentLine
 let g:indentLine_enabled = 1
@@ -107,20 +104,19 @@ inoremap <c-[> <esc>
 inoremap <c-]> <esc>
 inoremap <c-w> <esc>dbs
 inoremap <c-u> <esc>d^s
-inoremap <c-k> <esc>C
 inoremap <c-y> <esc>cc
 noremap Y y$
 noremap <F8> :let @/=""<CR>
-noremap <unique> <leader>y "+y
-noremap <unique> <leader>p "+p
-noremap <unique> <leader>P "+P
-vnoremap <unique> < <gv
-vnoremap <unique> > >gv
+noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>P "+P
+vnoremap < <gv
+vnoremap > >gv
 noremap <c-l> :bnext<cr>
 noremap <c-h> :bprevious<cr>
 noremap <Leader>bd :bdelete<cr>
-noremap <unique> <Up> gk
-noremap <unique> <Down> gj
+noremap <Up> gk
+noremap <Down> gj
 noremap <leader>r viwpyiw
 noremap <leader>z :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
