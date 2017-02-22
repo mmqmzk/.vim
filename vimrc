@@ -23,7 +23,6 @@ syntax on
 call plug#begin(fnamemodify(expand('<sfile>'), ':h') . '/bundle')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
@@ -31,11 +30,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'Shougo/neosnippet'
@@ -48,6 +42,12 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
 call plug#end()
 
 " ctrlp
@@ -106,6 +106,12 @@ map g/ <Plug>(incsearch-stay)
 " indentLine
 let g:indentLine_enabled = 1
 
+" vim-operator-replace
+map _ <Plug>(operator-replace)
+
+" vinarise hex files
+let g:vinarise_enable_auto_detect = 1
+
 "key mapping
 inoremap <c-cr> <esc>o
 inoremap <s-cr> <esc>O
@@ -117,7 +123,7 @@ inoremap <c-w> <esc>dbs
 inoremap <c-u> <esc>d^s
 inoremap <c-y> <esc>cc
 noremap Y y$
-noremap <F8> :let @/=""<CR>
+noremap <F8> :let @/=""<cr>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
@@ -125,7 +131,7 @@ vnoremap < <gv
 vnoremap > >gv
 noremap <c-l> :bnext<cr>
 noremap <c-h> :bprevious<cr>
-noremap <Leader>d :bdelete<cr>
+noremap <leader>d :bdelete<cr>
 noremap <Up> gk
 noremap <Down> gj
 noremap <leader>r viwpyiw
