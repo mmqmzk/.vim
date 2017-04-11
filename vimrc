@@ -117,13 +117,9 @@ inoremap <c-cr> <esc>o
 inoremap <s-cr> <esc>O
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
-inoremap <c-[> <esc>
-inoremap <c-]> <esc>
-inoremap <c-w> <esc>dbs
-inoremap <c-u> <esc>d^s
 inoremap <c-y> <esc>cc
 noremap Y y$
-noremap <F8> :let @/=""<cr>
+noremap <F8> :let @/ = ""<cr>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
