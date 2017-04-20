@@ -15,6 +15,7 @@ set ruler
 set expandtab
 set go=
 set cursorcolumn
+set cursorline
 set encoding=utf-8
 
 set nocompatible
@@ -81,12 +82,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " easy motion
 let g:EasyMotion_smartcase = 1
-map <leader>/ <Plug>(easymotion-sn)
-omap <leader>/ <Plug>(easymotion-tn)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map <leader>l <Plug>(easymotion-lineforward)
-map <leader>h <Plug>(easymotion-linebackward)
+map <leader><leader>/ <Plug>(easymotion-sn)
+omap <leader><leader>/ <Plug>(easymotion-tn)
+map <leader><leader>j <Plug>(easymotion-j)
+map <leader><leader>k <Plug>(easymotion-k)
+map <leader><leader>l <Plug>(easymotion-lineforward)
+map <leader><leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 
 " neosnippet
