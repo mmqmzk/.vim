@@ -13,7 +13,6 @@ set incsearch
 set smartcase
 set ruler
 set expandtab
-set go=
 set encoding=utf-8
 
 set nocompatible
@@ -140,4 +139,7 @@ if (has('gui_running'))
     color solarized
     set guifont=YaHei\ consolas\ Hybrid:h10
     set lines=36 columns=120
+    set cursorcolumn
+    set cursorline
+    set go=
 endif
