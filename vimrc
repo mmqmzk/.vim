@@ -42,6 +42,7 @@ Plug 'kana/vim-operator-replace'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
+Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
