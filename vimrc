@@ -40,6 +40,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
