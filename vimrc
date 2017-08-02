@@ -13,7 +13,6 @@ set incsearch
 set smartcase
 set ruler
 set expandtab
-set go=
 set encoding=utf-8
 
 set nocompatible
@@ -135,9 +134,12 @@ noremap <Down> gj
 noremap <leader>r viwpyiw
 noremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
-"if (has('gui_running'))
-    "set background=dark
-    "color solarized
-    "set guifont=YaHei\ consolas\ Hybrid:h10
-    "set lines=36 columns=120
-"endif
+if (has('gui_running'))
+    set background=dark
+    color solarized
+    set guifont=YaHei\ consolas\ Hybrid:h10
+    set lines=36 columns=120
+    set cursorcolumn
+    set cursorline
+    set go=
+endif
