@@ -36,6 +36,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'Yggdroot/indentLine'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 Plug 'tpope/vim-fugitive'
@@ -104,11 +106,12 @@ map g/ <Plug>(incsearch-stay)
 " indentLine
 let g:indentLine_enabled = 1
 
+" yankstack
+map <m-y> <Plug>yankstack_substitute_older_paste
+map <m-s-y> <Plug>yankstack_substitute_newer_paste
+
 " vim-operator-replace
 map _ <Plug>(operator-replace)
-
-" vinarise hex files
-let g:vinarise_enable_auto_detect = 1
 
 "key mapping
 inoremap <c-cr> <esc>o
