@@ -14,8 +14,6 @@ set smartcase
 set ruler
 set expandtab
 set go=
-set cursorcolumn
-set cursorline
 set encoding=utf-8
 
 set nocompatible
