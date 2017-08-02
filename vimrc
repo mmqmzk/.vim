@@ -20,8 +20,8 @@ set nocompatible
 syntax on
 
 call plug#begin(fnamemodify(expand('<sfile>'), ':h') . '/bundle')
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'bling/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
@@ -59,9 +59,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='badwolf'
-let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme='badwolf'
+"let g:airline_powerline_fonts = 1
 
 " neocomplcache
 let g:acp_enableAtStartup = 0
@@ -135,9 +135,9 @@ noremap <Down> gj
 noremap <leader>r viwpyiw
 noremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
-if (has('gui_running'))
-    set background=dark
-    color solarized
-    set guifont=YaHei\ consolas\ Hybrid:h10
-    set lines=36 columns=120
-endif
+"if (has('gui_running'))
+    "set background=dark
+    "color solarized
+    "set guifont=YaHei\ consolas\ Hybrid:h10
+    "set lines=36 columns=120
+"endif
