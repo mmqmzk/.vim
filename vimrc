@@ -18,7 +18,7 @@ set encoding=utf-8
 set nocompatible
 syntax on
 
-call plug#begin(fnamemodify(expand('<sfile>'), ':h') . '/bundle')
+call plug#begin(expand('<sfile>:h') . '/bundle')
 "Plug 'bling/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
