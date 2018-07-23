@@ -49,6 +49,8 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " ctrlp
