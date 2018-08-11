@@ -19,8 +19,8 @@ set nocompatible
 syntax on
 
 call plug#begin(expand('<sfile>:h') . '/bundle')
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'bling/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
@@ -29,9 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'Shougo/neocomplcache.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'Yggdroot/indentLine'
@@ -51,6 +48,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'valloric/youcompleteme'
 call plug#end()
 
 " ctrlp
@@ -65,19 +63,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 1
 
-" neocomplcache
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-inoremap <expr><c-g> neocomplcache#undo_completion()
-
 " nerdtree
 noremap <F4> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -91,15 +76,6 @@ map <leader><leader>k <Plug>(easymotion-k)
 map <leader><leader>l <Plug>(easymotion-lineforward)
 map <leader><leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
-
-" neosnippet
-imap <c-k> <Plug>(neosnippet_expand_or_jump)
-smap <c-k> <Plug>(neosnippet_expand_or_jump)
-xmap <c-k> <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)"
-            \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
 
 " incsearch
 map /  <Plug>(incsearch-forward)
@@ -137,6 +113,14 @@ noremap <Down> gj
 noremap <leader>r viwpyiw
 noremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
+
+noremap <F12> :YcmCompleter GoTo<cr>
+noremap <F9> :YcmCompleter GoToDeclaration<cr>
+noremap <F10> :YcmCompleter GoToDefinition<cr>
+noremap <F7> :YcmCompleter GoToReferences<cr>
+
+noremap <F6> :YcmCompleter GetDoc<cr>
+
 if (has('gui_running'))
     set background=dark
     color solarized
