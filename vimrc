@@ -2,10 +2,10 @@ set number
 set relativenumber
 set autoindent
 set showcmd
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set scrolloff=4
-set softtabstop=4
+set softtabstop=2
 set backspace=indent,eol,start
 set showmatch
 set hlsearch
