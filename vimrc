@@ -66,6 +66,11 @@ let g:airline_powerline_fonts = 1
 noremap <F4> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" sneak
+"let g:sneak#label = 1
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+
 " easy motion
 let g:EasyMotion_smartcase = 1
 map <leader><leader>/ <Plug>(easymotion-sn)
