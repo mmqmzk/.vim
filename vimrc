@@ -19,15 +19,15 @@ set nocompatible
 syntax on
 
 call plug#begin(expand('<sfile>:h') . '/bundle')
-" Plug 'bling/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'terryma/vim-expand-region'
@@ -40,14 +40,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'valloric/youcompleteme'
 call plug#end()
 
