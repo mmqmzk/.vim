@@ -60,8 +60,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " airline
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme='badwolf'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='badwolf'
 "let g:airline_powerline_fonts = 1
 
 " neocomplcache
