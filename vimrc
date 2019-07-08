@@ -43,14 +43,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " ctrlp
