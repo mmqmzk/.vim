@@ -97,25 +97,32 @@ map <m-s-y> <Plug>yankstack_substitute_newer_paste
 map _ <Plug>(operator-replace)
 
 "key mapping
-inoremap <c-cr> <esc>o
-inoremap <s-cr> <esc>O
-inoremap <c-a> <esc>I
-inoremap <c-e> <esc>A
-inoremap <c-y> <esc>cc
-noremap Y y$
+inoremap <c-cr> <c-o>o
+inoremap <s-cr> <c-o>O
+inoremap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-y> <c-o>cc
+
+nnoremap Y y$
+
 noremap <F8> :let @/ = ""<cr>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
+
 vnoremap < <gv
 vnoremap > >gv
+vnoremap p pgvy
+
 noremap <c-l> :bnext<cr>
 noremap <c-h> :bprevious<cr>
 noremap <leader>d :bdelete<cr>
-noremap <Up> gk
-noremap <Down> gj
-noremap <leader>r viwpyiw
-noremap <leader>b :CtrlPBuffer<cr>
+
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+nnoremap <leader>r viwpgvy
+nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 noremap <F12> :YcmCompleter GoTo<cr>
@@ -125,6 +132,7 @@ noremap <F7> :YcmCompleter GoToReferences<cr>
 
 noremap <F6> :YcmCompleter GetDoc<cr>
 
+>>>>>>> master
 if (has('gui_running'))
     set background=dark
     color solarized
