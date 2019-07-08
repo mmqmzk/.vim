@@ -132,7 +132,6 @@ noremap <F7> :YcmCompleter GoToReferences<cr>
 
 noremap <F6> :YcmCompleter GetDoc<cr>
 
->>>>>>> master
 if (has('gui_running'))
     set background=dark
     color solarized
