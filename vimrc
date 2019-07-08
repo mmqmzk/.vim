@@ -19,8 +19,8 @@ set nocompatible
 syntax on
 
 call plug#begin(expand('<sfile>:h') . '/bundle')
-"Plug 'bling/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
