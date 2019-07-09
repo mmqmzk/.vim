@@ -97,8 +97,7 @@ map <m-s-y> <Plug>yankstack_substitute_newer_paste
 map _ <Plug>(operator-replace)
 
 "key mapping
-inoremap <c-cr> <c-o>o
-inoremap <s-cr> <c-o>O
+inoremap <s-cr> <c-o>o
 inoremap <c-a> <c-o>^
 inoremap <c-e> <c-o>$
 inoremap <c-y> <c-o>cc
@@ -114,15 +113,17 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap p pgvy
 
-noremap <c-l> :bnext<cr>
-noremap <c-h> :bprevious<cr>
-noremap <leader>d :bdelete<cr>
+noremap <c-l> <esc>:bnext<cr>
+noremap <c-h> <esc>:bprevious<cr>
+noremap <c-tab> <esc>:bnext<cr>
+noremap <c-s-tab> <esc>:bprevious<cr>
+noremap <leader>d <esc>:bdelete<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
 nnoremap <Up> gk
 nnoremap <Down> gj
 
 nnoremap <leader>r viwpgvy
-nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 noremap <F12> :YcmCompleter GoTo<cr>
