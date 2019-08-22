@@ -48,6 +48,7 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'valloric/youcompleteme'
+Plug 'bkad/CamelCaseMotion'
 call plug#end()
 
 " ctrlp
@@ -67,19 +68,44 @@ noremap <F4> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " sneak
-"let g:sneak#label = 1
+" let g:sneak#label = 1
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
-" easy motion
+" CamelCaseMotion
+map ]w <Plug>CamelCaseMotion_w
+map [w <Plug>CamelCaseMotion_b
+map ]e <Plug>CamelCaseMotion_e
+map [e <Plug>CamelCaseMotion_ge
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
+imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+
+"easy motion
 let g:EasyMotion_smartcase = 1
-map <leader><leader>/ <Plug>(easymotion-sn)
-omap <leader><leader>/ <Plug>(easymotion-tn)
-map <leader><leader>j <Plug>(easymotion-j)
-map <leader><leader>k <Plug>(easymotion-k)
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader><leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
+let g:EasyMotion_space_jump_first = 1
+nmap <space>/ <Plug>(easymotion-sn)
+omap <space>/ <Plug>(easymotion-tn)
+nmap <space>s <Plug>(easymotion-s)
+nmap <space>f <Plug>(easymotion-bd-f)
+nmap <space>t <Plug>(easymotion-bd-t)
+nmap <space>w <Plug>(easymotion-bd-w)
+nmap <space>W <Plug>(easymotion-bd-W)
+nmap <space>e <Plug>(easymotion-bd-e)
+nmap <space>E <Plug>(easymotion-bd-E)
+nmap <space>n <Plug>(easymotion-n)
+nmap <space>N <Plug>(easymotion-N)
+nmap <space>j <Plug>(easymotion-bd-jk)
+nmap <space>k <Plug>(easymotion-bd-jk)
+nmap <space>l <Plug>(easymotion-lineanywhere)
+nmap <space>h <Plug>(easymotion-lineanywhere)
+nmap <space>c <Plug>(easymotion-bd-f2)
+nmap <space>C <Plug>(easymotion-bd-t2)
+nmap <space>; <Plug>(easymotion-next)
+nmap <space>, <Plug>(easymotion-prev)
+nmap <space>. <Plug>(easymotion-repeat)
 
 " incsearch
 map /  <Plug>(incsearch-forward)
@@ -108,6 +134,9 @@ noremap <F8> :let @/ = ""<cr>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
+noremap <space>y "+y
+noremap <space>p "+p
+noremap <space>P "+P
 
 vnoremap < <gv
 vnoremap > >gv
@@ -117,8 +146,11 @@ noremap <c-l> <esc>:bnext<cr>
 noremap <c-h> <esc>:bprevious<cr>
 noremap <c-tab> <esc>:bnext<cr>
 noremap <c-s-tab> <esc>:bprevious<cr>
-noremap <leader>d <esc>:bdelete<cr>
+nnoremap <leader>d <esc>:bdelete<cr>
+nnoremap <space>d <esc>:bdelete<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <space>b :CtrlPBuffer<cr>
+nnoremap <space><cr> :nohlsearch<cr>
 
 nnoremap <Up> gk
 nnoremap <Down> gj
