@@ -103,7 +103,7 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_space_jump_first = 1
 nmap <space>/ <Plug>(easymotion-sn)
 omap <space>/ <Plug>(easymotion-tn)
-nmap <space>s <Plug>(easymotion-s)
+nmap <space>s <Plug>(easymotion-jumptoanywhere)
 nmap <space>f <Plug>(easymotion-bd-f)
 nmap <space>t <Plug>(easymotion-bd-t)
 nmap <space>w <Plug>(easymotion-bd-w)
