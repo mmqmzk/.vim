@@ -25,7 +25,7 @@ set hidden
 syntax on
 filetype plugin indent on
 
-" for i in range(97,122)
+" for i in [68, 127]
   " let c = nr2char(i)
   " execute "map \e".c." <M-".c.">"
   " execute "map! \e".c." <M-".c.">"
@@ -50,7 +50,7 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'Yggdroot/indentLine'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'svermeulen/vim-yoink'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
@@ -95,6 +95,7 @@ inoremap <expr><c-g> neocomplcache#undo_completion()
 noremap <F4> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" NERDConnenter
 let g:NERDSpaceDelims = 1
 map <space>i <Plug>NERDCommenterInvert
 map gc <Plug>NERDCommenterInvert
@@ -111,8 +112,12 @@ map ]e <Plug>CamelCaseMotion_e
 map [e <Plug>CamelCaseMotion_ge
 omap ie <Plug>CamelCaseMotion_ie
 xmap ie <Plug>CamelCaseMotion_ie
-imap <S-Left> <C-o><Plug>CamelCaseMotion_b
-imap <S-Right> <C-o><Plug>CamelCaseMotion_w
+imap <s-left> <c-o><Plug>CamelCaseMotion_b
+imap <s-right> <c-o><Plug>CamelCaseMotion_w
+imap <c-b> <c-o>d<Plug>CamelCaseMotion_b
+imap <c-d> <c-o>d<Plug>CamelCaseMotion_w
+imap <c-bs> <c-o>db
+imap <c-del> <c-o>dw
 
 " Easy motion
 let g:EasyMotion_smartcase = 1
@@ -160,20 +165,34 @@ map zg/ <Plug>(incsearch-fuzzyspell-stay)
 " IndentLine
 let g:indentLine_enabled = 1
 
-map <c-y> <Plug>yankstack_substitute_older_paste
-map <c-e> <Plug>yankstack_substitute_newer_paste
+" MultipleCursor
+let g:multi_cursor_select_all_word_key = '<c-l>'
+let g:multi_cursor_select_all_key      = '<c-h>'
+
+" Yoink
+let g:yoinkSwapClampAtEnds = 0
+let g:yoinkIncludeDeleteOperations = 1
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
+nmap gy <plug>(YoinkPostPasteSwapBack)
+nmap gY <plug>(YoinkPostPasteSwapForward)
 
 " Subversive
+let g:subversiveCurrentTextRegiste = 'r'
 map gr <plug>(SubversiveSubstitute)
 nmap grr <plug>(SubversiveSubstituteLine)
 nmap gR <plug>(SubversiveSubstituteToEndOfLine)
-
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
 
 " Key mapping
 inoremap <s-cr> <c-o>o
 inoremap <c-a> <c-o>^
 inoremap <c-e> <c-o>$
 inoremap <c-k> <c-o>D
+noremap <F2> :redraw<cr>
 
 cnoremap w!! w !sudo tee % > /dev/null
 
@@ -203,30 +222,30 @@ vnoremap x "_x
 nnoremap s "_s
 vnoremap s "_s
 
-noremap <leader>y "+y
-noremap <leader>p "+p
-noremap <leader>P "+P
-noremap <space>y "+y
-noremap <space>p "+p
-noremap <space>P "+P
+nmap <leader>y "+y
+nmap <leader>p "+p
+nmap <leader>P "+P
+nmap <space>y "+y
+nmap <space>p "+p
+nmap <space>P "+P
 
 nnoremap gz `[v`]
 
 vnoremap < <gv
 vnoremap > >gv
 vnoremap p pgvy
-vnoremap v ^$
+vnoremap v ^$h
 vnoremap * y/\V<c-r>0<cr>
 vnoremap # y?\V<c-r>0<cr>
 
-noremap <c-l> <esc>:bnext<cr>
-noremap <c-h> <esc>:bprevious<cr>
-noremap <c-tab> <esc>:bnext<cr>
-noremap <c-s-tab> <esc>:bprevious<cr>
+nnoremap <c-j> <esc>:bnext<cr>
+nnoremap <c-k> <esc>:bprevious<cr>
+
 nnoremap <leader>d <esc>:bdelete<cr>
 nnoremap <space>d <esc>:bdelete<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <space>b :CtrlPBuffer<cr>
+
 noremap <F8> :let @/ = ""<cr>
 nnoremap <leader><cr> :nohlsearch<cr>
 nnoremap <space><cr> :nohlsearch<cr>
@@ -234,8 +253,8 @@ nnoremap <space><cr> :nohlsearch<cr>
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-"nnoremap <leader>r viwpgvy
-"nnoremap <space>r viwpgvy
+nnoremap <leader>r viwpgvy
+nnoremap <space>r viwpgvy
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 if (has('gui_running'))
