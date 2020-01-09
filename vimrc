@@ -194,9 +194,7 @@ noremap <F2> :redraw<cr>
 
 cnoremap w!! w !sudo tee % > /dev/null
 
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --hidden\ --smart-case
-elseif executable('ag')
+if executable('ag')
   set grepprg=ag\ --vimgrep\ --hidden\ --smart-case
 endif
 
