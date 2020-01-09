@@ -230,6 +230,7 @@ nmap <space>p "+p
 nmap <space>P "+P
 
 nnoremap gz `[v`]
+inoremap <c-f> <c-o>^
 
 vnoremap < <gv
 vnoremap > >gv
