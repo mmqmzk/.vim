@@ -1,4 +1,3 @@
-set number
 set relativenumber
 set autoindent
 set smartindent
@@ -171,7 +170,7 @@ inoremap <c-e> <c-o>$
 inoremap <c-k> <c-o>D
 noremap <F2> :redraw<cr>
 
-cnoremap w!! w !sudo tee % > /dev/null
+cmap w!! w !sudo tee > /dev/null %
 
 if executable('ag')
   set grepprg=ag\ --vimgrep\ --hidden\ --smart-case
