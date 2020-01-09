@@ -194,7 +194,12 @@ noremap <F2> :redraw<cr>
 
 cnoremap w!! w !sudo tee % > /dev/null
 
-set grepprg=ag\ --vimgrep\ --hidden
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --hidden\ --smart-case
+elseif executable('ag')
+  set grepprg=ag\ --vimgrep\ --hidden\ --smart-case
+endif
+
 let g:ag_prg="ag --vimgrep --smart-case --hidden"
 
 nnoremap K :grep! -s -r '\b<c-r><c-w>\b' .<cr>:cwindow<cr>
