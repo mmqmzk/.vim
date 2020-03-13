@@ -107,8 +107,7 @@ imap <s-left> <c-o><Plug>CamelCaseMotion_b
 imap <s-right> <c-o><Plug>CamelCaseMotion_w
 imap <c-b> <c-o>d<Plug>CamelCaseMotion_b
 imap <c-d> <c-o>d<Plug>CamelCaseMotion_w
-imap <c-bs> <c-o>db
-imap <c-del> <c-o>dw
+imap [3;5~ <c-o>dw
 
 " Easy motion
 let g:EasyMotion_smartcase = 1
