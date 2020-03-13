@@ -30,6 +30,8 @@ filetype plugin indent on
   " execute "map! \e".c." <M-".c.">"
 " endfor
 
+let g:AutoPairsMapCh = 0
+
 call plug#begin(expand('<sfile>:h') . '/bundle')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -107,7 +109,8 @@ imap <s-left> <c-o><Plug>CamelCaseMotion_b
 imap <s-right> <c-o><Plug>CamelCaseMotion_w
 imap <c-b> <c-o>d<Plug>CamelCaseMotion_b
 imap <c-d> <c-o>d<Plug>CamelCaseMotion_w
-imap [3;5~ <c-o>dw
+inoremap  <c-r>=AutoPairsDelete()<cr><c-w>
+inoremap [3;5~ <c-o>dw
 
 " Easy motion
 let g:EasyMotion_smartcase = 1
