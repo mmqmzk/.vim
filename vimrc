@@ -68,9 +68,9 @@ let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window = 'min:4,max:72'
 if executable('fd')
-  let g:ctrlp_user_command = 'fd -H . %s '
+  let g:ctrlp_user_command = 'fd --hidden . %s '
 elseif executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --hidden --filename-pattern ""'
 endif
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn|vscode))|(node_modules|typings)$',
@@ -126,6 +126,8 @@ map <space>t <Plug>(easymotion-t)
 map <space>T <Plug>(easymoTion-t)
 map <space>w <Plug>(easymotion-w)
 map <space>W <Plug>(easymotion-W)
+map <space>b <Plug>(easymotion-b)
+map <space>B <Plug>(easymotion-B)
 map <space>e <Plug>(easymotion-e)
 map <space>E <Plug>(easymotion-E)
 map <space>ge <Plug>(easymotion-ge)
@@ -178,22 +180,28 @@ xmap P <plug>(SubversiveSubstitute)
 " Key mapping
 inoremap <s-cr> <c-o>o
 inoremap <c-a> <c-o>^
+inoremap <c-f> <c-o>^
 inoremap <c-e> <c-o>$
 inoremap <c-k> <c-o>D
 noremap <F2> :redraw<cr>
 
 cnoremap w!! w !sudo tee > /dev/null %
+nnoremap <space>q :w !sudo tee % > /dev/null<cr>
+nnoremap <space>z :w !sudo tee % > /dev/null<cr>L:qa<cr>
 
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --smart-case
-elseif executable('ag')
-  set grepprg=ag\ --vimgrep\ --smart-case
+nnoremap K :grep! -F '<c-r><c-w>' .<cr>:cwindow<cr>
+vnoremap K y:grep! -F '<c-r>0' .<cr>:cwindow<cr>
+
+if executable('ag')
+  set grepprg=ag\ --vimgrep\ --smart-case\ 2>/dev/null
+elseif executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case\ 2>/dev/null
+else
+  nnoremap K :grep! -s -r -F '<c-r><c-w>' .<cr>:cwindow<cr>
+  vnoremap K y:grep! -s -r -F '<c-r>0' .<cr>:cwindow<cr>
 endif
 
 let g:ag_prg="ag --vimgrep --smart-case --hidden"
-
-nnoremap K :grep! -s '<c-r><c-w>' .<cr>:cwindow<cr>
-vnoremap K y:grep! -s -F '<c-r>0' .<cr>:cwindow<cr>
 
 nnoremap Y y$
 nnoremap [0 :cfirst<cr>
@@ -209,10 +217,7 @@ nnoremap ]q :lclose<cr>
 nnoremap [l :lprevious<cr>
 nnoremap ]l :lnext<cr>
 
-nnoremap x "_x
-nnoremap xp xp
 vnoremap x "_x
-nnoremap s "_s
 vnoremap s "_s
 
 nmap <leader>y "+y
@@ -223,8 +228,6 @@ nmap <space>p "+p
 nmap <space>P "+P
 
 nnoremap gz `[v`]
-inoremap <c-f> <c-o>^
-
 vnoremap < <gv
 vnoremap > >gv
 vnoremap p pgvy
@@ -237,8 +240,8 @@ nnoremap <c-k> <esc>:bprevious<cr>
 
 nnoremap <leader>d <esc>:bdelete<cr>
 nnoremap <space>d <esc>:bdelete<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <space>b :CtrlPBuffer<cr>
+nnoremap <leader>u :CtrlPBuffer<cr>
+nnoremap <space>u :CtrlPBuffer<cr>
 
 noremap <F8> :let @/ = ""<cr>
 nnoremap <leader><cr> :nohlsearch<cr>
