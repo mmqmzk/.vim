@@ -92,6 +92,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:NERDSpaceDelims = 1
 map <space>i <Plug>NERDCommenterInvert
 map gc <Plug>NERDCommenterInvert
+map  <Plug>NERDCommenterInvert
+map  <Plug>NERDCommenterMinimal
 
 
 " Sneak
@@ -223,9 +225,9 @@ vnoremap s "_s
 nmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
-nmap <space>y "+y
-nmap <space>p "+p
-nmap <space>P "+P
+nmap zy "+y
+nmap zp "+p
+nmap zP "+P
 
 nnoremap gz `[v`]
 vnoremap < <gv
