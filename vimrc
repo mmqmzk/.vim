@@ -156,8 +156,8 @@ map zg/ <Plug>(incsearch-fuzzyspell-stay)
 let g:indentLine_enabled = 1
 
 " MultipleCursor
-let g:multi_cursor_select_all_word_key = '<c-l>'
-let g:multi_cursor_select_all_key = '<c-h>'
+let g:multi_cursor_select_all_word_key = '<c-s-l>'
+let g:multi_cursor_select_all_key = '<c-s-h>'
 
 " Yoink
 let g:yoinkSwapClampAtEnds = 0
@@ -186,8 +186,8 @@ inoremap <c-k> <c-o>D
 noremap <F2> :redraw<cr>
 
 cnoremap w!! w !sudo tee > /dev/null %
-nnoremap <space>q :w !sudo tee % > /dev/null<cr>
-nnoremap <space>z :w !sudo tee % > /dev/null<cr>L:qa<cr>
+nnoremap <space>q :w !sudo tee % > /dev/null<cr>L:qa<cr>
+nnoremap <space>z :w !sudo tee % > /dev/null<cr>
 
 nnoremap K :grep! -F '<c-r><c-w>' .<cr>:cwindow<cr>
 vnoremap K y:grep! -F '<c-r>0' .<cr>:cwindow<cr>
@@ -240,8 +240,8 @@ nnoremap <c-k> <esc>:bprevious<cr>
 
 nnoremap <leader>d <esc>:bdelete<cr>
 nnoremap <space>d <esc>:bdelete<cr>
-nnoremap <leader>u :CtrlPBuffer<cr>
-nnoremap <space>u :CtrlPBuffer<cr>
+nnoremap <leader>r :CtrlPBuffer<cr>
+nnoremap <space>r :CtrlPBuffer<cr>
 
 noremap <F8> :let @/ = ""<cr>
 nnoremap <leader><cr> :nohlsearch<cr>
@@ -250,8 +250,6 @@ nnoremap <space><cr> :nohlsearch<cr>
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-nnoremap <leader>r viwpgvy
-nnoremap <space>r viwpgvy
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 noremap <F12> :YcmCompleter GoTo<cr>
