@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-ROOT=$(cd "$(dirname $0)"; pwd)
-cd $ROOT
+
+pushd "$(dirname "$0")"
 git submodule update --init
-vim -c "PlugInstall" -c "PlugUpdate"  -c "qa"
+vim -c "PlugInstall | PlugUpdate | qa"
+pip3 install --user pynvim -U
+npm install -g bash-language-server
+apt update && apt install shellcheck -y
+popd

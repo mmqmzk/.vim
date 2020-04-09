@@ -21,6 +21,7 @@ set nocompatible
 set autoread
 set autowrite
 set hidden
+set wildmenu
 syntax on
 filetype plugin indent on
 
@@ -31,6 +32,11 @@ filetype plugin indent on
 " endfor
 
 let g:AutoPairsMapCh = 0
+let g:ale_completion_enabled = 1
+let g:ale_set_balloons = 1
+
+let g:FZF_BASE = expand('$FZF_BASE')
+let g:use_fzf_instead_ctrl_p = executable('fzf') && isdirectory(g:FZF_BASE)
 
 call plug#begin(expand('<sfile>:h') . '/bundle')
 Plug 'bling/vim-airline'
@@ -38,7 +44,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
@@ -48,45 +53,151 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'Yggdroot/indentLine'
 Plug 'michaeljsmith/vim-indent-object'
-" Plug 'svermeulen/vim-yoink'
 Plug 'tpope/vim-fugitive'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 " Plug 'justinmk/vim-sneak'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug 'valloric/youcompleteme'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'moll/vim-node', {'for': 'javascript'}
 Plug 'bkad/CamelCaseMotion'
-Plug 'svermeulen/vim-subversive'
+" Plug 'dense-analysis/ale'
+if g:use_fzf_instead_ctrl_p
+  Plug 'junegunn/fzf', { 'dir': g:FZF_BASE }
+  Plug 'junegunn/fzf.vim'
+else
+  Plug 'kien/ctrlp.vim'
+  if executable('ag')
+    Plug 'rking/ag.vim'
+  endif
+endif
+" if has('nvim')
+  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" else
+  " Plug 'Shougo/deoplete.nvim'
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" Plug 'Shougo/neco-vim', {'for': 'vim'}
+" Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 call plug#end()
 
-" Ctrlp
-let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_match_window = 'min:4,max:72'
-if executable('fd')
-  let g:ctrlp_user_command = 'fd --hidden . %s '
-elseif executable('ag')
-  let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor --hidden --filename-pattern ""'
+" Deoplete
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><c-n> deoplete#auto_complete()
+" inoremap <expr><c-g> deoplete#undo_completion()
+" inoremap <expr><c-c> deoplete#close_popup()
+
+" ALE
+" function! BashLangServProjRoot(buffer)
+  " let l:git_path = ale#path#FindNearestDirectory(a:buffer, '.git')
+  " let l:curr_dir = fnamemodify(bufname(a:buffer), ':h')
+  " return !empty(l:git_path) ? fnamemodify(l:git_path, ':h:h') : l:curr_dir
+" endfunction
+" call ale#linter#Define('sh', {
+      " \ 'name': 'bashls',
+      " \ 'lsp': 'stdio',
+      " \ 'executable': function('ale_linters#sh#language_server#GetExecutable'),
+      " \ 'command': function('ale_linters#sh#language_server#GetCommand'),
+      " \ 'project_root': function('BashLangServProjRoot'),
+      " \ })
+" let g:ale_linters = {
+      " \ 'javascript': ['eslint', 'tsserver'],
+      " \ 'sh': ['language-server', 'shell', 'shellcheck']
+      " \ }
+" let g:ale_linter_aliases = {'sh': ['sh', 'bash', 'zsh']}
+" let g:ale_fixers = {
+      " \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      " \ 'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+      " \ 'json': ['jq', 'remove_trailing_lines', 'trim_whitespace'],
+      " \ }
+" let g:ale_fix_on_save = 1
+" let g:ale_echo_msg_error_str = ''
+" let g:ale_echo_msg_warning_str = ''
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_completion_symbols = {
+      " \ 'text': '',
+      " \ 'method': '',
+      " \ 'function': '',
+      " \ 'constructor': '',
+      " \ 'field': '',
+      " \ 'variable': '',
+      " \ 'class': '',
+      " \ 'interface': '',
+      " \ 'module': '',
+      " \ 'property': '',
+      " \ 'unit': 'unit',
+      " \ 'value': 'val',
+      " \ 'enum': '',
+      " \ 'keyword': 'keyword',
+      " \ 'snippet': '',
+      " \ 'color': 'color',
+      " \ 'file': '',
+      " \ 'reference': 'ref',
+      " \ 'folder': '',
+      " \ 'enum member': '',
+      " \ 'constant': '',
+      " \ 'struct': '',
+      " \ 'event': 'event',
+      " \ 'operator': '',
+      " \ 'type_parameter': 'type param',
+      " \ '<default>': 'v'
+      " \ }
+" let g:airline#extensions#ale#enabled = 1
+" set omnifunc=ale#completion#OmniFunc
+" call deoplete#custom#source('ale', 'rank', 999)
+" nmap <F2> <Plug>(ale_previous_wrap)
+" nmap <s-F2> <Plug>(ale_next_wrap)
+" nmap <F12> <Plug>(ale_go_to_definition)
+" nmap <c-F12> <Plug>(ale_go_to_type_definition)
+" nmap <F7> <Plug>(ale_find_references)
+" nmap <F6> <Plug>(ale_fix)
+" nmap gh <Plug>(ale_hover)
+" nmap <c-s-s> <Plug>(ale_lint)
+
+if g:use_fzf_instead_ctrl_p
+  " Fzf
+  nnoremap <c-p> :Files<cr>
+  nnoremap <leader>r :Buffers<cr>
+  nnoremap <space>r :Buffers<cr>
+
+  nmap <space><tab> <plug>(fzf-maps-n)
+  xmap <space><tab> <plug>(fzf-maps-x)
+  omap <space><tab> <plug>(fzf-maps-o)
+  imap <c-x><c-k> <plug>(fzf-complete-word)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
+else
+  " Ctrlp
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 'r'
+  let g:ctrlp_match_window = 'min:4,max:72'
+  if executable('fd')
+    let g:ctrlp_user_command = 'fd --hidden . %s '
+  elseif executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  endif
+  let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\v[\/](\.(git|hg|svn|vscode))|(node_modules|typings)$',
+        \ 'file': '\v\.(exe|so|dll|log|doc|docx|xls|xlsx|class|swp)$',
+        \ 'link': 'some_bad_symbolic_links',
+        \ }
+  nnoremap <leader>r :CtrlPBuffer<cr>
+  nnoremap <space>r :CtrlPBuffer<cr>
 endif
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn|vscode))|(node_modules|typings)$',
-  \ 'file': '\v\.(exe|so|dll|log|doc|docx|xls|xlsx|class|swp)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 " Airline
-let g:airline_theme='angr'
-"let g:airline_powerline_fonts = 1
+let g:airline_theme='wombat' " owo base16_3024 fruit_punch
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Nerdtree
 noremap <F4> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      \ && b:NERDTreeType == "primary") | q | endif
 
 " NERDConnenter
 let g:NERDSpaceDelims = 1
@@ -114,7 +225,7 @@ imap <c-d> <c-o>d<Plug>CamelCaseMotion_w
 inoremap  <c-r>=AutoPairsDelete()<cr><c-w>
 inoremap [3;5~ <c-o>dw
 
-" Easy motion
+" Easy Motion
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_space_jump_first = 1
@@ -162,22 +273,22 @@ let g:multi_cursor_select_all_word_key = '<c-s-l>'
 let g:multi_cursor_select_all_key = '<c-s-h>'
 
 " Yoink
-let g:yoinkSwapClampAtEnds = 0
-let g:yoinkIncludeDeleteOperations = 1
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
-nmap gy <plug>(YoinkPostPasteSwapBack)
-nmap gY <plug>(YoinkPostPasteSwapForward)
+" let g:yoinkSwapClampAtEnds = 0
+" let g:yoinkIncludeDeleteOperations = 1
+" nmap p <plug>(YoinkPaste_p)
+" nmap P <plug>(YoinkPaste_P)
+" nmap [y <plug>(YoinkRotateBack)
+" nmap ]y <plug>(YoinkRotateForward)
+" nmap gy <plug>(YoinkPostPasteSwapBack)
+" nmap gY <plug>(YoinkPostPasteSwapForward)
 
 " Subversive
-let g:subversiveCurrentTextRegiste = 'r'
-map gs <plug>(SubversiveSubstitute)
-nmap gss <plug>(SubversiveSubstituteLine)
-nmap gS <plug>(SubversiveSubstituteToEndOfLine)
-xmap p <plug>(SubversiveSubstitute)
-xmap P <plug>(SubversiveSubstitute)
+" let g:subversiveCurrentTextRegiste = 'r'
+" map gs <plug>(SubversiveSubstitute)
+" nmap gss <plug>(SubversiveSubstituteLine)
+" nmap gS <plug>(SubversiveSubstituteToEndOfLine)
+" xmap p <plug>(SubversiveSubstitute)
+" xmap P <plug>(SubversiveSubstitute)
 
 " Key mapping
 inoremap <s-cr> <c-o>o
@@ -185,7 +296,7 @@ inoremap <c-a> <c-o>^
 inoremap <c-f> <c-o>^
 inoremap <c-e> <c-o>$
 inoremap <c-k> <c-o>D
-noremap <F2> :redraw<cr>
+noremap <F5> :redraw<cr>
 
 cnoremap w!! w !sudo tee > /dev/null %
 nnoremap <space>q :w !sudo tee % > /dev/null<cr>L:qa<cr>
@@ -199,8 +310,8 @@ if executable('ag')
 elseif executable('rg')
   set grepprg=rg\ --vimgrep\ --smart-case\ 2>/dev/null
 else
-  nnoremap K :grep! -s -r -F '<c-r><c-w>' .<cr>:cwindow<cr>
-  vnoremap K y:grep! -s -r -F '<c-r>0' .<cr>:cwindow<cr>
+  nnoremap K :grep! -srF '<c-r><c-w>' .<cr>:cwindow<cr>
+  vnoremap K y:grep! -srF '<c-r>0' .<cr>:cwindow<cr>
 endif
 
 let g:ag_prg="ag --vimgrep --smart-case --hidden"
@@ -242,8 +353,6 @@ nnoremap <c-k> <esc>:bprevious<cr>
 
 nnoremap <leader>d <esc>:bdelete<cr>
 nnoremap <space>d <esc>:bdelete<cr>
-nnoremap <leader>r :CtrlPBuffer<cr>
-nnoremap <space>r :CtrlPBuffer<cr>
 
 noremap <F8> :let @/ = ""<cr>
 nnoremap <leader><cr> :nohlsearch<cr>
@@ -254,12 +363,12 @@ nnoremap <Down> gj
 
 nnoremap <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
-noremap <F12> :YcmCompleter GoTo<cr>
-noremap <F9> :YcmCompleter GoToDeclaration<cr>
-noremap <F10> :YcmCompleter GoToDefinition<cr>
-noremap <F7> :YcmCompleter GoToReferences<cr>
-
-noremap <F6> :YcmCompleter GetDoc<cr>
+" YouCompleteMe
+" noremap <F12> :YcmCompleter GoTo<cr>
+" noremap <F9> :YcmCompleter GoToDeclaration<cr>
+" noremap <F10> :YcmCompleter GoToDefinition<cr>
+" noremap <F7> :YcmCompleter GoToReferences<cr>
+" noremap gh :YcmCompleter GetDoc<cr>
 
 if (has('gui_running'))
     set background=dark
