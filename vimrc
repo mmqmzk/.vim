@@ -148,8 +148,8 @@ call plug#end()
 " set omnifunc=ale#completion#OmniFunc
 " call deoplete#custom#source('ale', 'rank', 999)
 " nmap <F2> <Plug>(ale_previous_wrap)
-" nmap <s-F2> <Plug>(ale_next_wrap)
-" nmap <F12> <Plug>(ale_go_to_definition)
+" nmap <F2> <Plug>(ale_next_wrap)
+" nmap [1;2Q <Plug>(ale_previous_wrap)
 " nmap <c-F12> <Plug>(ale_go_to_type_definition)
 " nmap <F7> <Plug>(ale_find_references)
 " nmap <F6> <Plug>(ale_fix)
@@ -165,7 +165,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 
 if g:use_fzf_instead_ctrl_p
   " Fzf
