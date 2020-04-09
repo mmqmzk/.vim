@@ -156,6 +156,17 @@ call plug#end()
 " nmap gh <Plug>(ale_hover)
 " nmap <c-s-s> <Plug>(ale_lint)
 
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 if g:use_fzf_instead_ctrl_p
   " Fzf
   nnoremap <c-p> :Files<cr>
