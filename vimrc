@@ -283,6 +283,7 @@ let g:multi_cursor_select_all_key = '<c-s-h>'
 " Yoink
 let g:yoinkSwapClampAtEnds = 0
 let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkAutoFormatPaste = 1
 nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
 nmap [y <plug>(YoinkRotateBack)
@@ -291,7 +292,7 @@ nmap gy <plug>(YoinkPostPasteSwapBack)
 nmap gY <plug>(YoinkPostPasteSwapForward)
 
 " Subversive
-let g:subversiveCurrentTextRegiste = 'r'
+let g:subversiveCurrentTextRegister = 'r'
 map gs <plug>(SubversiveSubstitute)
 nmap gss <plug>(SubversiveSubstituteLine)
 nmap gS <plug>(SubversiveSubstituteToEndOfLine)
