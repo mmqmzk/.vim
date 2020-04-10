@@ -1,19 +1,20 @@
 set number relativenumber
-set autoindent
-set smartindent
+set autoindent smartindent
 set showcmd
-set showmode
 set tabstop=2
 set shiftwidth=2
 set scrolloff=4
+set sidescrolloff=4
 set softtabstop=2
+set nojoinspaces
 set backspace=indent,eol,start
 set showmatch
 set hlsearch
 set incsearch
-set smartcase ignorecase
+set ignorecase smartcase
 set ruler
 set expandtab
+set smarttab
 set encoding=utf-8
 set timeoutlen=500
 set ttimeoutlen=100
@@ -203,6 +204,7 @@ let g:airline_theme='wombat' " owo base16_3024 fruit_punch
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+set noshowmode
 
 " Nerdtree
 noremap <F4> :NERDTreeToggle<CR>
@@ -384,7 +386,7 @@ if (has('gui_running'))
     set background=dark
     color solarized
     set guifont=YaHei\ consolas\ Hybrid:h10
-    set lines=36 columns=120
+    " set lines=36 columns=120
     set cursorcolumn
     set cursorline
     set go=

@@ -5,5 +5,5 @@ git submodule update --init
 vim -c "PlugInstall | PlugUpdate | qa"
 pip3 install --user pynvim -U
 npm install -g bash-language-server
-apt update && apt install shellcheck -y
+sudo apt update -qq && sudo apt install shellcheck -y
 popd
