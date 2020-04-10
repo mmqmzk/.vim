@@ -204,6 +204,7 @@ let g:airline_theme='wombat' " owo base16_3024 fruit_punch
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#syntastic#enabled = 1
 set noshowmode
 
 " Nerdtree
