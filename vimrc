@@ -66,6 +66,7 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'moll/vim-node', {'for': 'javascript'}
+Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'valloric/youcompleteme'
 Plug 'bkad/CamelCaseMotion'
 Plug 'dense-analysis/ale'
