@@ -62,6 +62,7 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'moll/vim-node', {'for': 'javascript'}
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bkad/CamelCaseMotion'
 " Plug 'dense-analysis/ale'
 if g:use_fzf_instead_ctrl_p
@@ -161,7 +162,6 @@ call plug#end()
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
