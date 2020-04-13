@@ -313,8 +313,9 @@ inoremap <c-k> <c-o>D
 noremap <F5> :redraw<cr>
 
 cnoremap w!! w !sudo tee > /dev/null %
-nnoremap <space>q :w !sudo tee % > /dev/null<cr>L:qa<cr>
+nnoremap <space>q :qa!<cr>
 nnoremap <space>z :w !sudo tee % > /dev/null<cr>
+nnoremap <space>zz :w !sudo tee % > /dev/null<cr>L:qa!<cr>
 
 nnoremap K :grep! -F '<c-r><c-w>' .<cr>:cwindow<cr>
 vnoremap K y:grep! -F '<c-r>0' .<cr>:cwindow<cr>
@@ -361,6 +362,8 @@ vnoremap p pgvy
 vnoremap v ^$h
 vnoremap * y/\V<c-r>0<cr>
 vnoremap # y?\V<c-r>0<cr>
+nnoremap <c-y> 3<c-y>
+nnoremap <c-e> 3<c-e>
 
 nnoremap <c-j> <esc>:bnext<cr>
 nnoremap <c-k> <esc>:bprevious<cr>
