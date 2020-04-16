@@ -111,11 +111,12 @@ inoremap <expr><c-c> deoplete#close_popup()
       " \ })
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'tsserver'],
-      \ 'sh': ['language-server', 'shell', 'shellcheck']
+      \ 'sh': ['language-server', 'shell', 'shellcheck', 'shfmt']
       \ }
 let g:ale_linter_aliases = {'sh': ['sh', 'bash', 'zsh']}
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'sh': ['shfmt'],
       \ 'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
       \ 'json': ['jq', 'remove_trailing_lines', 'trim_whitespace'],
       \ }
