@@ -104,68 +104,6 @@ call plug#end()
       " \ 'command': function('ale_linters#sh#language_server#GetCommand'),
       " \ 'project_root': function('BashLangServProjRoot'),
       " \ })
-" let g:ale_linters = {
-      " \ 'javascript': ['eslint', 'tsserver'],
-      " \ 'sh': ['language-server', 'shell', 'shellcheck']
-      " \ }
-" let g:ale_linter_aliases = {'sh': ['sh', 'bash', 'zsh']}
-" let g:ale_fixers = {
-      " \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      " \ 'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
-      " \ 'json': ['jq', 'remove_trailing_lines', 'trim_whitespace'],
-      " \ }
-" let g:ale_fix_on_save = 1
-" let g:ale_echo_msg_error_str = ''
-" let g:ale_echo_msg_warning_str = ''
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" let g:ale_completion_symbols = {
-      " \ 'text': '',
-      " \ 'method': '',
-      " \ 'function': '',
-      " \ 'constructor': '',
-      " \ 'field': '',
-      " \ 'variable': '',
-      " \ 'class': '',
-      " \ 'interface': '',
-      " \ 'module': '',
-      " \ 'property': '',
-      " \ 'unit': 'unit',
-      " \ 'value': 'val',
-      " \ 'enum': '',
-      " \ 'keyword': 'keyword',
-      " \ 'snippet': '',
-      " \ 'color': 'color',
-      " \ 'file': '',
-      " \ 'reference': 'ref',
-      " \ 'folder': '',
-      " \ 'enum member': '',
-      " \ 'constant': '',
-      " \ 'struct': '',
-      " \ 'event': 'event',
-      " \ 'operator': '',
-      " \ 'type_parameter': 'type param',
-      " \ '<default>': 'v'
-      " \ }
-" let g:airline#extensions#ale#enabled = 1
-" set omnifunc=ale#completion#OmniFunc
-" call deoplete#custom#source('ale', 'rank', 999)
-" nmap <F2> <Plug>(ale_previous_wrap)
-" nmap <F2> <Plug>(ale_next_wrap)
-" nmap [1;2Q <Plug>(ale_previous_wrap)
-" nmap <c-F12> <Plug>(ale_go_to_type_definition)
-" nmap <F7> <Plug>(ale_find_references)
-" nmap <F6> <Plug>(ale_fix)
-" nmap gh <Plug>(ale_hover)
-" nmap <c-s-s> <Plug>(ale_lint)
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 if g:use_fzf_instead_ctrl_p
   " Fzf
