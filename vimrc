@@ -269,6 +269,14 @@ endif
 
 let g:ag_prg="ag --vimgrep --smart-case --hidden"
 
+if &diff
+  nmap [ [c
+  nmap ] ]c
+  nmap <c-F5> :diffupdate<cr>
+  set background=dark
+  colorscheme solarized
+endif
+
 nnoremap Y y$
 nnoremap [0 :cfirst<cr>
 nnoremap ]0 :clast<cr>
@@ -282,6 +290,7 @@ nnoremap [q :lopen<cr>
 nnoremap ]q :lclose<cr>
 nnoremap [l :lprevious<cr>
 nnoremap ]l :lnext<cr>
+nmap <tab> <c-w>w
 
 vnoremap x "_x
 vnoremap s "_s
