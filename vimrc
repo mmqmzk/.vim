@@ -154,7 +154,7 @@ let g:ale_completion_symbols = {
       \ }
 let g:airline#extensions#ale#enabled = 1
 set omnifunc=ale#completion#OmniFunc
-call deoplete#custom#source('ale', 'rank', 999)
+silent! call deoplete#custom#source('ale', 'rank', 999)
 nmap <F2> <Plug>(ale_next_wrap)
 nmap [1;2Q <Plug>(ale_previous_wrap)
 nmap <F12> <Plug>(ale_go_to_definition)

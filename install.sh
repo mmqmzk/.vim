@@ -5,7 +5,7 @@ set -e
 pushd "$(dirname "$0")"
 git submodule update --init
 vim +PlugInstall +PlugUpdate +qa
-pip3 install --user pynvim -U
+sudo -H pip3 install pynvim -U
 npm install -g bash-language-server
 if which brew &> /dev/null; then
   brew install shellcheck shfmt
