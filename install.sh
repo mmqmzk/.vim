@@ -9,7 +9,7 @@ vim +PlugInstall +PlugUpdate +qa
 =======
 sudo -H pip3 install pynvim -U
 npm install -g bash-language-server
-if which brew &> /dev/null; then
+if which brew &>/dev/null; then
   brew install shellcheck shfmt
 else
   sudo apt update -qq && sudo apt install shellcheck -y
