@@ -178,35 +178,23 @@ inoremap [3;5~ <c-o>dw
 
 " Easy Motion
 let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_upper = 1
 let g:EasyMotion_startofline = 0
+let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_space_jump_first = 1
 let g:EasyMotion_enter_jump_first = 1
-map <space>/ <Plug>(easymotion-sn)
-omap <space>/ <Plug>(easymotion-sn)
-map <space>s <Plug>(easymotion-jumptoanywhere)
-map <space>f <Plug>(easymotion-f)
-map <space>F <Plug>(easymotion-F)
-map <space>t <Plug>(easymotion-t)
-map <space>T <Plug>(easymoTion-t)
-map <space>w <Plug>(easymotion-w)
-map <space>W <Plug>(easymotion-W)
-map <space>b <Plug>(easymotion-b)
-map <space>B <Plug>(easymotion-B)
-map <space>e <Plug>(easymotion-e)
-map <space>E <Plug>(easymotion-E)
-map <space>ge <Plug>(easymotion-ge)
-map <space>gE <Plug>(easymotion-gE)
-map <space>n <Plug>(easymotion-n)
-map <space>N <Plug>(easymotion-N)
-map <space>j <Plug>(easymotion-j)
-map <space>k <Plug>(easymotion-k)
-map <space>l <Plug>(easymotion-lineanywhere)
-map <space>h <Plug>(easymotion-lineanywhere)
-map <space>c <Plug>(easymotion-f2)
-map <space>x <Plug>(easymotion-t2)
+let g:EasyMotion_keys = 'ASDFGHJKLQWERTYUIOPZXCVBNM;'
 map <space>; <Plug>(easymotion-next)
 map <space>, <Plug>(easymotion-prev)
 map <space>. <Plug>(easymotion-repeat)
+map <space> <Plug>(easymotion-prefix)
+map <space>/ <Plug>(easymotion-sn)
+map <space>l <Plug>(easymotion-lineforward)
+map <space>h <Plug>(easymotion-linebackward)
+map f <Plug>(easymotion-lineanywhere)
+map F <Plug>(easymotion-jumptoanywhere)
+map t <Plug>(easymotion-bd-tl)
+map T <Plug>(easymotion-bd-t)
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
