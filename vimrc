@@ -184,8 +184,7 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_space_jump_first = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_keys = 'ASDFGHJKLQWERTYUIOPZXCVBNM;'
-let g:EasyMotion_re_line_anywhere = '\v(<.|^$)|(.>|^$)|(\l)\zs(\u)|(_\zs.)' .
-      \ '|(#\zs)|([-=\+\*\{\(\)\^\$!/;:,"])|((\&|\|)+)'
+let g:EasyMotion_re_line_anywhere = '\v(<.|.>)|(\l)\zs(\u)|([-_=\+\*#\(\[]+\zs.)|([\.\{\}\)\]\^\$\|!/;:,"'."'".']+)'
 map <space>; <Plug>(easymotion-next)
 map <space>, <Plug>(easymotion-prev)
 map <space>. <Plug>(easymotion-repeat)
@@ -193,9 +192,7 @@ map <space> <Plug>(easymotion-prefix)
 map <space>/ <Plug>(easymotion-sn)
 map <space>l <Plug>(easymotion-lineforward)
 map <space>h <Plug>(easymotion-linebackward)
-map f <Plug>(easymotion-lineanywhere)
-noremap F f
-map t <Plug>(easymotion-bd-tl)
+map F <Plug>(easymotion-lineanywhere)
 map T <Plug>(easymotion-jumptoanywhere)
 
 " Incsearch
