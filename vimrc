@@ -227,6 +227,10 @@ map ]e <Plug>CamelCaseMotion_e
 map [e <Plug>CamelCaseMotion_ge
 omap ie <Plug>CamelCaseMotion_ie
 xmap ie <Plug>CamelCaseMotion_ie
+nmap <s-left> <Plug>CamelCaseMotion_b
+nmap <s-right> <Plug>CamelCaseMotion_e
+vmap <s-left> <Plug>CamelCaseMotion_b
+vmap <s-right> <Plug>CamelCaseMotion_e
 imap <s-left> <c-o><Plug>CamelCaseMotion_b
 imap <s-right> <c-o><Plug>CamelCaseMotion_w
 imap <c-b> <c-o>d<Plug>CamelCaseMotion_b
@@ -354,8 +358,8 @@ vnoremap p pgvy
 vnoremap v ^$h
 vnoremap * y/\V<c-r>0<cr>
 vnoremap # y?\V<c-r>0<cr>
-nnoremap <c-y> 3<c-y>
-nnoremap <c-e> 3<c-e>
+nnoremap e 3<c-y>
+nnoremap y 3<c-e>
 
 nnoremap <c-j> <esc>:bnext<cr>
 nnoremap <c-k> <esc>:bprevious<cr>
