@@ -16,12 +16,14 @@ set ruler
 set expandtab
 set smarttab
 set encoding=utf-8
-set timeoutlen=500
-set ttimeoutlen=100
+set timeoutlen=750
+set ttimeoutlen=250
 set nocompatible
 set autoread
 set autowrite
 set hidden
+" set mouse=a
+" set ttymouse=xterm2
 set wildmenu
 syntax on
 filetype plugin indent on
@@ -62,7 +64,8 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'moll/vim-node', {'for': 'javascript'}
-Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'valloric/youcompleteme'
 Plug 'bkad/CamelCaseMotion'
 " Plug 'dense-analysis/ale'
 if g:use_fzf_instead_ctrl_p
@@ -138,7 +141,7 @@ else
 endif
 
 " Airline
-let g:airline_theme='wombat' " owo base16_3024 fruit_punch
+let g:airline_theme='badwolf' " owo base16_3024 fruit_punch
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -146,13 +149,14 @@ let g:airline#extensions#syntastic#enabled = 1
 set noshowmode
 
 " Nerdtree
-noremap <F4> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-      \ && b:NERDTreeType == "primary") | q | endif
+" noremap <F4> :NERDTreeToggle<CR>
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      " \ && b:NERDTreeType == "primary") | q | endif
 
 " NERDConnenter
 let g:NERDSpaceDelims = 1
 map <space>i <Plug>NERDCommenterInvert
+nmap <space>i <Plug>NERDCommenterInvertj
 map gc <Plug>NERDCommenterInvert
 map  <Plug>NERDCommenterInvert
 map  <Plug>NERDCommenterMinimal
@@ -189,6 +193,7 @@ let g:EasyMotion_space_jump_first = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_keys = 'ASDFGHJKLQWERTYUIOPZXCVBNM;'
 let g:EasyMotion_re_line_anywhere = '\v(<.|.>)|(\l)\zs(\u)|([-_=\+\*#\(\[]+\zs.)|([\.\{\}\)\]\^\$\|!/;:,"'."'".']+)'
+let g:EasyMotion_re_anywhere = '\v(<.|^)|(<.|.$)|(_\zs.)|(#\zs.)'
 map <space>; <Plug>(easymotion-next)
 map <space>, <Plug>(easymotion-prev)
 map <space>. <Plug>(easymotion-repeat)
@@ -227,9 +232,9 @@ let g:multi_cursor_select_all_key = '<c-s-h>'
 
 " Subversive
 " let g:subversiveCurrentTextRegister = 'r'
-" map gs <plug>(SubversiveSubstitute)
-" nmap gss <plug>(SubversiveSubstituteLine)
-" nmap gS <plug>(SubversiveSubstituteToEndOfLine)
+" map gr <plug>(SubversiveSubstitute)
+" nmap grr <plug>(SubversiveSubstituteLine)
+" nmap gR <plug>(SubversiveSubstituteToEndOfLine)
 " xmap p <plug>(SubversiveSubstitute)
 " xmap P <plug>(SubversiveSubstitute)
 
@@ -268,7 +273,7 @@ if &diff
   colorscheme solarized
 endif
 
-nnoremap Y y$
+" nnoremap Y y$
 nnoremap [0 :cfirst<cr>
 nnoremap ]0 :clast<cr>
 nnoremap [o :copen<cr>
@@ -290,6 +295,7 @@ nmap <leader>y "+y
 nmap <leader>p "+p
 nmap <leader>P "+P
 nmap zy "+y
+nmap Y "+y
 nmap zp "+p
 nmap zP "+P
 
