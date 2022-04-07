@@ -1,3 +1,4 @@
 /bundle/
 *.old
 *.swp
+.netrwhist
