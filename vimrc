@@ -60,8 +60,8 @@ Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-" Plug 'justinmk/vim-sneak'
-" Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'justinmk/vim-sneak'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
@@ -204,22 +204,22 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 set noshowmode
 
 " Nerdtree
-" noremap <F4> :NERDTreeToggle<CR>
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-      " \ && b:NERDTreeType == "primary") | q | endif
+noremap <F4> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      \ && b:NERDTreeType == "primary") | q | endif
 
 " NERDConnenter
 let g:NERDSpaceDelims = 1
 map <space>i <Plug>NERDCommenterInvert
 nmap <space>i <Plug>NERDCommenterInvertj
 map gc <Plug>NERDCommenterInvert
-map  <Plug>NERDCommenterInvert
+map  <Plug>NERDCommenterInvertj
 map  <Plug>NERDCommenterMinimal
 
 
 " Sneak
-" map f <Plug>Sneak_s
-" map F <Plug>Sneak_S
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
 
 " CamelCaseMotion
 map ]w <Plug>CamelCaseMotion_w
@@ -353,6 +353,8 @@ nmap zy "+y
 nmap Y "+y
 nmap zp "+p
 nmap zP "+P
+vmap gy y`>
+vmap gY "+y`>
 
 nnoremap gz `[v`]
 vnoremap < <gv
@@ -363,6 +365,8 @@ vnoremap * y/\V<c-r>0<cr>
 vnoremap # y?\V<c-r>0<cr>
 nnoremap e 3<c-y>
 nnoremap y 3<c-e>
+inoremap e <c-o><c-y>
+inoremap y i<c-o><c-e>
 
 nnoremap <c-j> <esc>:bnext<cr>
 nnoremap <c-k> <esc>:bprevious<cr>
