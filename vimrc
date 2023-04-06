@@ -42,34 +42,43 @@ let g:FZF_BASE = expand('$FZF_BASE')
 let g:use_fzf_instead_ctrl_p = executable('fzf') && isdirectory(g:FZF_BASE)
 
 call plug#begin(expand('<sfile>:h') . '/bundle')
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'altercation/vim-colors-solarized'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'Lokaltog/vim-easymotion'
 " Plug 'scrooloose/syntastic'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'terryma/vim-expand-region'
+" Plug 'valloric/youcompleteme'
 Plug 'Yggdroot/indentLine'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bkad/CamelCaseMotion'
+Plug 'bling/vim-airline'
+Plug 'chrisbra/matchit'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'dense-analysis/ale'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'justinmk/vim-sneak'
+Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'svermeulen/vim-yoink'
+Plug 'scrooloose/nerdcommenter'
 Plug 'svermeulen/vim-subversive'
+Plug 'svermeulen/vim-yoink'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'justinmk/vim-sneak'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'Shougo/neco-vim', {'for': 'vim'}
+Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'moll/vim-node', {'for': 'javascript'}
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-Plug 'moll/vim-node', {'for': 'javascript'}
-" Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'valloric/youcompleteme'
-Plug 'bkad/CamelCaseMotion'
-Plug 'dense-analysis/ale'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 if g:use_fzf_instead_ctrl_p
   Plug 'junegunn/fzf', { 'dir': g:FZF_BASE }
   Plug 'junegunn/fzf.vim'
@@ -86,8 +95,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'Shougo/neco-vim', {'for': 'vim'}
-Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 call plug#end()
 
 " Deoplete
@@ -220,6 +227,8 @@ map  <Plug>NERDCommenterMinimal
 " Sneak
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " CamelCaseMotion
 map ]w <Plug>CamelCaseMotion_w
@@ -256,8 +265,9 @@ map <space> <Plug>(easymotion-prefix)
 map <space>/ <Plug>(easymotion-sn)
 map <space>l <Plug>(easymotion-lineforward)
 map <space>h <Plug>(easymotion-linebackward)
-map F <Plug>(easymotion-lineanywhere)
-map T <Plug>(easymotion-jumptoanywhere)
+map <space>s <Plug>(easymotion-bd-sn)
+" map F <Plug>(easymotion-lineanywhere)
+" map T <Plug>(easymotion-jumptoanywhere)
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
@@ -266,6 +276,19 @@ map g/ <Plug>(incsearch-stay)
 map z/ <Plug>(incsearch-fuzzyspell-/)
 map z? <Plug>(incsearch-fuzzyspell-?)
 map zg/ <Plug>(incsearch-fuzzyspell-stay)
+
+" incsearch.vim x fuzzy x vim-easymotion
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " IndentLine
 let g:indentLine_enabled = 1
