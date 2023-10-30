@@ -3,7 +3,7 @@ set autoindent smartindent
 set showcmd
 set tabstop=2
 set shiftwidth=2
-set scrolloff=4
+set scrolloff=2
 set sidescrolloff=4
 set softtabstop=2
 set nojoinspaces
@@ -263,16 +263,20 @@ map <space>, <Plug>(easymotion-prev)
 map <space>. <Plug>(easymotion-repeat)
 map <space> <Plug>(easymotion-prefix)
 map <space>/ <Plug>(easymotion-sn)
-map <space>l <Plug>(easymotion-lineforward)
-map <space>h <Plug>(easymotion-linebackward)
-map <space>s <Plug>(easymotion-bd-sn)
+map <space>l <Plug>(easymotion-lineanywhere)
+map <space>h <Plug>(easymotion-lineanywhere)
+map <space>k <Plug>(easymotion-bd-jk)
 " map F <Plug>(easymotion-lineanywhere)
-" map T <Plug>(easymotion-jumptoanywhere)
+
+nmap <space>v v<Plug>(easymotion-jumptoanywhere)
+nmap <space>V V<Plug>(easymotion-bd-jk)
+map <space>g <Plug>(easymotion-jumptoanywhere)
+" map <space><space> <Plug>(easymotion-bd-s)
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+map g/ <Plug>(incsearch-forward)
 map z/ <Plug>(incsearch-fuzzyspell-/)
 map z? <Plug>(incsearch-fuzzyspell-?)
 map zg/ <Plug>(incsearch-fuzzyspell-stay)
@@ -317,18 +321,6 @@ xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
 
 " Key mapping
-inoremap <s-cr> <c-o>o
-inoremap <c-a> <c-o>^
-inoremap <c-f> <c-o>^
-inoremap <c-e> <c-o>$
-inoremap <c-k> <c-o>D
-noremap <F5> :redraw<cr>
-
-cnoremap w!! w !sudo tee > /dev/null %
-nnoremap <space>q :qa!<cr>
-nnoremap <space>z :w !sudo tee % > /dev/null<cr>
-nnoremap <space>zz :w !sudo tee % > /dev/null<cr>L:qa!<cr>
-
 nnoremap K :grep! -F '<c-r><c-w>' .<cr>:cwindow<cr>
 vnoremap K y:grep! -F '<c-r>0' .<cr>:cwindow<cr>
 
@@ -350,6 +342,22 @@ if &diff
   set background=dark
   colorscheme solarized
 endif
+
+inoremap <s-cr> <c-o>o
+inoremap <s-a-cr> <esc>O
+inoremap <c-a> <c-o>^
+inoremap <c-f> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-k> <c-o>D
+inoremap <c-[> <c-o><<
+inoremap <c-]> <c-o>>>
+inoremap <c-l> <c-o>==
+noremap <F5> :redraw<cr>
+
+cnoremap w!! w !sudo tee > /dev/null %
+nnoremap <space>q :qa!<cr>
+nnoremap <space>z :w !sudo tee % > /dev/null<cr>
+nnoremap <space>zz :w !sudo tee % > /dev/null<cr>L:qa!<cr>
 
 " nnoremap Y y$
 nnoremap [0 :cfirst<cr>
@@ -378,6 +386,8 @@ nmap zp "+p
 nmap zP "+P
 vmap gy y`>
 vmap gY "+y`>
+map Q gq
+map U <c-r>
 
 nnoremap gz `[v`]
 vnoremap < <gv
