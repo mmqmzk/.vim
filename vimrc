@@ -220,7 +220,7 @@ map <space>k <Plug>(easymotion-bd-jk)
 nmap <space>v v<Plug>(easymotion-jumptoanywhere)
 nmap <space>V V<Plug>(easymotion-bd-jk)
 map <space>g <Plug>(easymotion-jumptoanywhere)
-" map <space><space> <Plug>(easymotion-bd-s)
+map <space><space> <Plug>(easymotion-s)
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
