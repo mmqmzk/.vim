@@ -383,12 +383,13 @@ nmap <leader>p "*p
 nmap <leader>P "*P
 nmap zy "*y
 nmap Y "*y
-nmap zp "*p
-nmap zP "*P
+nmap zp "0p
+nmap zP "0P
 vmap gy y`>
 vmap gY "*y`>
 map Q gq
 map U <c-r>
+map zgr "0gr
 
 nnoremap gz `[v`]
 vnoremap < <gv
