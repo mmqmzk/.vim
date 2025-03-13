@@ -262,10 +262,12 @@ map <space>; <Plug>(easymotion-next)
 map <space>, <Plug>(easymotion-prev)
 map <space>. <Plug>(easymotion-repeat)
 map <space> <Plug>(easymotion-prefix)
+map <space>e <Plug>(easymotion-bd-e)
+map <space>E <Plug>(easymotion-bd-E)
+map <space>s <Plug>(easymotion-s2)
 map <space>/ <Plug>(easymotion-sn)
 map <space>l <Plug>(easymotion-lineanywhere)
 map <space>h <Plug>(easymotion-lineanywhere)
-map <space>k <Plug>(easymotion-bd-jk)
 " map F <Plug>(easymotion-lineanywhere)
 
 nmap <space>v v<Plug>(easymotion-jumptoanywhere)
@@ -378,13 +380,15 @@ nmap <tab> <c-w>w
 vnoremap x "_x
 vnoremap s "_s
 
-nmap <leader>y "*y
-nmap <leader>p "*p
-nmap <leader>P "*P
-nmap zy "*y
-nmap Y "*y
-nmap zp "0p
-nmap zP "0P
+map <leader>p "*p
+map <leader>P "*P
+map <space>p "*p
+map <space>P "*P
+map <leader>y "*y
+map <space>y "*y
+map Y "*y
+map zp "0p
+map zP "0P
 vmap gy y`>
 vmap gY "*y`>
 map Q gq
